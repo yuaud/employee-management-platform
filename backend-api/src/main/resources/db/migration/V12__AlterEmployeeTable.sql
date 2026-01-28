@@ -1,0 +1,2 @@
+ALTER TABLE employees
+ADD COLUMN file_url VARCHAR(500);
