@@ -69,7 +69,8 @@ public class SecurityConfig {
 
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "http://empfrontend513.s3-website.eu-central-1.amazonaws.com"
+                "http://empfrontend513.s3-website.eu-central-1.amazonaws.com",
+                "https://empfrontend513.s3-website.eu-central-1.amazonaws.com"
         ));
         config.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"
