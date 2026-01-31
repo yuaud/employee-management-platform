@@ -4,17 +4,9 @@ const Sidebar = () => {
   return (
     <div className='min-w-40 bg-surface'>
         <NavLink
-        to="/"
-        className={({isActive}) => 
-          `font-bold block mt-8 px-4 py-2 ${isActive ? "text-accent" : "text-text"}`
-        }
-        >
-          Home
-        </NavLink>
-        <NavLink
         to="/jobs"
         className={({isActive}) => 
-          `font-bold block px-4 py-2 ${isActive ? "text-accent" : "text-text"}`
+          `mt-24 font-bold block px-4 py-2 ${isActive ? "text-accent" : "text-text"}`
         }
         >
           Jobs
@@ -42,14 +34,6 @@ const Sidebar = () => {
         }
         >
           Employees
-        </NavLink>
-        <NavLink
-        to="/aboutme"
-        className={({isActive}) => 
-          `mt-16 font-bold block px-4 py-2 ${isActive ? "text-accent" : "text-text"}`
-        }
-        >
-          About Me
         </NavLink>
     </div>
   )

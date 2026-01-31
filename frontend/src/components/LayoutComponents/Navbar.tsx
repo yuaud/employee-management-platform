@@ -1,6 +1,8 @@
 import { useTheme } from '../../context/ThemeContext';
 import {Sun, Moon, SidebarOpen, SidebarClose} from "lucide-react";
 import AuthButtons from '../Auth/AuthButtons';
+import { useAuth } from '../../context/AuthContext';
+import { NavLink } from 'react-router';
 
 interface NavbarPropsInterface {
     isSideBarOpen: boolean;
@@ -9,15 +11,34 @@ interface NavbarPropsInterface {
 
 const Navbar = ({ isSideBarOpen, onToggleSidebar }: NavbarPropsInterface) => {
     const {theme, toggleTheme} = useTheme();
+    const { authenticated } = useAuth();
   return (
     <nav className="w-full h-14 px-6 py-3 text-text bg-surface flex items-center justify-between">
       {/* Sol Taraf */}
       <div className="flex items-center space-x-6">
+        {authenticated && (
         <button onClick={onToggleSidebar}>
             <p className='text-text'>
             {isSideBarOpen ? <SidebarClose/> : <SidebarOpen/>}
             </p>
         </button>
+        )}
+        <NavLink
+        to="/"
+        className={({isActive}) => 
+          `font-bold block px-4 py-2 ${isActive ? "text-accent" : "text-text"}`
+        }
+        >
+          Home
+        </NavLink>
+        <NavLink
+        to="/aboutme"
+        className={({isActive}) => 
+          `font-bold block px-4 py-2 ${isActive ? "text-accent" : "text-text"}`
+        }
+        >
+          About Me
+        </NavLink>
       </div>
       {/* Orta */}
       <div>
