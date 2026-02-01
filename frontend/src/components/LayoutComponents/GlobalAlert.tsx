@@ -5,7 +5,7 @@ const GlobalAlert = () => {
   if (!error) return null;
   return (
     <div
-      className={`fixed left-1/2 -translate-x-1/2 top-4 right-4 px-4 py-2 rounded text-white ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded text-white flex items-center gap-2 shadow-lg ${
         error.type === "error" ? "bg-red-600" : "bg-green-600"
       }`}
     >

@@ -61,7 +61,7 @@ export const JobCard = ({ job, onInfo, onEdit, onDelete }: JobCardProps) => {
 // List grid card view
 export const JobCardList = ({ jobs, onInfo, onEdit, onDelete }: JobCardListProps) => {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+    <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-stretch">
       {jobs.map((job) => (
         <JobCard key={job.jobId} job={job} onInfo={onInfo} onEdit={onEdit} onDelete={onDelete}/>
       ))}

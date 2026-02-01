@@ -77,7 +77,7 @@ export const LocationCard = ({ location, onInfo, onEdit, onDelete }: LocationCar
 // List grid card view
 export const LocationCardList = ({ locations, onInfo, onEdit, onDelete }: LocationCardListProps) => {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+    <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-stretch">
       {locations.map((location) => (
         <LocationCard key={location.locationId} location={location} onInfo={onInfo} onEdit={onEdit} onDelete={onDelete}/>
       ))}

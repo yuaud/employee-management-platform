@@ -27,7 +27,9 @@ export const getToken = () => keycloak.token;
 export const getParsedToken = () => keycloak.tokenParsed;
 
 export const login = () => keycloak.login();
-export const logout = () => keycloak.logout();
+export const logout = () => keycloak.logout({
+    redirectUri: window.location.origin
+});
 
 export const hasRole = (role:string): boolean => {
     return keycloak.hasRealmRole(role);

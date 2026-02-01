@@ -1,27 +1,50 @@
-import { useTheme } from '../../context/ThemeContext';
-import {Sun, Moon, SidebarOpen, SidebarClose} from "lucide-react";
-import AuthButtons from '../Auth/AuthButtons';
+import { useTheme } from "../../context/ThemeContext";
+import { Sun, Moon, SidebarOpen, SidebarClose } from "lucide-react";
+import AuthButtons from "../Auth/AuthButtons";
+import { useAuth } from "../../context/AuthContext";
+import { NavLink } from "react-router";
 
 interface NavbarPropsInterface {
-    isSideBarOpen: boolean;
-    onToggleSidebar: () => void;
+  isSideBarOpen: boolean;
+  onToggleSidebar: () => void;
 }
 
 const Navbar = ({ isSideBarOpen, onToggleSidebar }: NavbarPropsInterface) => {
-    const {theme, toggleTheme} = useTheme();
+  const { theme, toggleTheme } = useTheme();
+  const { authenticated } = useAuth();
   return (
     <nav className="w-full h-14 px-6 py-3 text-text bg-surface flex items-center justify-between">
       {/* Sol Taraf */}
       <div className="flex items-center space-x-6">
-        <button onClick={onToggleSidebar}>
-            <p className='text-text'>
-            {isSideBarOpen ? <SidebarClose/> : <SidebarOpen/>}
+        {authenticated ? (
+          <button onClick={onToggleSidebar}>
+            <p className="text-text">
+              {isSideBarOpen ? <SidebarClose /> : <SidebarOpen />}
             </p>
-        </button>
+          </button>
+        ) : (
+          <div className="flex space-x-6">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `font-bold block px-4 py-2 ${isActive ? "text-accent" : "text-text"}`
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/aboutme"
+              className={({ isActive }) =>
+                `font-bold block px-4 py-2 ${isActive ? "text-accent" : "text-text"}`
+              }
+            >
+              About Me
+            </NavLink>
+          </div>
+        )}
       </div>
       {/* Orta */}
-      <div>
-      </div>
+      <div></div>
       {/* Sağ Taraf */}
       <div className="flex items-center space-x-4">
         {/* Light/Dark Mode */}
@@ -40,11 +63,11 @@ const Navbar = ({ isSideBarOpen, onToggleSidebar }: NavbarPropsInterface) => {
           />
         </button>
         <div>
-            <AuthButtons/>
+          <AuthButtons />
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

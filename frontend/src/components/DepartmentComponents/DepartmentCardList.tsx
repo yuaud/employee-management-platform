@@ -73,7 +73,7 @@ export const DepartmentCard = ({ department, onInfo, onEdit, onDelete }: Departm
 // List grid card view
 export const DepartmentCardList = ({ departments, onInfo, onEdit, onDelete }: DepartmentCardListProps) => {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+    <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-stretch">
       {departments.map((department) => (
         <DepartmentCard key={department.departmentId} department={department} onInfo={onInfo} onEdit={onEdit} onDelete={onDelete}/>
       ))}

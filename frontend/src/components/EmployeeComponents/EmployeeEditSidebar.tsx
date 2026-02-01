@@ -9,6 +9,7 @@ import { Toggle } from "../InputControlledComponents/Toggle";
 import type { ManagerLight } from "../../interfaces/Employee/ManagerInterface";
 import { ManagerDropdown } from "./ManagerDropDown";
 import { SubordinateSelector } from "./SubordinateSelector";
+import ImageDropzone from "./ImageDropZone";
 
 type FormErrors = {
   firstName?: string;
@@ -250,15 +251,15 @@ const EmployeeEditSidebar = ({
     };
 
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const selectedFile = e.target.files?.[0] || null;
-        setFile(selectedFile);
+    const handleFileChange = (file: File | null) => {
+        setFile(file);
+        if(!file) return;
         /* RAM şişmemesi için önceki url'yi bellekten kaldır */
-        if(selectedFile){
+        if(file){
             if(objectUrlRef.current){
                 URL.revokeObjectURL(objectUrlRef.current);
             }
-            const objectUrl = URL.createObjectURL(selectedFile);
+            const objectUrl = URL.createObjectURL(file);
             objectUrlRef.current = objectUrl;
             setPhotoUrl(objectUrl);
         }
@@ -281,7 +282,7 @@ const EmployeeEditSidebar = ({
     <div className="grid grid-cols-2 gap-2 relative">
     {/* Avatar */}
     <div className="col-span-2 flex flex-col items-center gap-1 mb-2">
-      <div className="w-28 h-28 rounded-full border border-gray-300 bg-gray-100 overflow-hidden">
+      <div className="w-28 h-28 mb-2 rounded-full border border-gray-300 bg-gray-100 overflow-hidden">
         {photoUrl ? (
           <img
             src={photoUrl}
@@ -296,13 +297,7 @@ const EmployeeEditSidebar = ({
         )}
       </div>
 
-      <input
-        type="file"
-        accept="image/png, image/jpeg, image/webp"
-        multiple={false}
-        onChange={handleFileChange}
-        className="text-xs"
-      />
+      <ImageDropzone onFile={(file) => handleFileChange(file)} />
     </div>
 
     {/* First Name */}
@@ -457,7 +452,7 @@ const EmployeeEditSidebar = ({
 
       {/* Avatar */}
       <div className="col-span-2 flex flex-col items-center gap-1 mb-2">
-        <div className="w-28 h-28 rounded-full border border-gray-300 bg-gray-100 overflow-hidden">
+        <div className="w-28 h-28 mb-2 rounded-full border border-gray-300 bg-gray-100 overflow-hidden">
           {photoUrl ? (
             <img
               src={photoUrl}
@@ -472,13 +467,7 @@ const EmployeeEditSidebar = ({
           )}
         </div>
 
-        <input
-          type="file"
-          accept="image/png, image/jpeg, image/webp"
-          multiple={false}
-          onChange={handleFileChange}
-          className="text-xs"
-        />
+        <ImageDropzone onFile={(file) => handleFileChange(file)} />
       </div>
 
       {/* First Name */}
