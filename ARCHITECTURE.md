@@ -1,6 +1,6 @@
 # Employee Management Platform
 
-## 📌 İçerik
+## 📌 Content
 
 * [Overview](#overview)
     - [Purpose](#-projenin-amacı)
@@ -721,6 +721,7 @@ npm run dev
 
 
 ## Screenshots (opsiyonel)
+
 
 
 
