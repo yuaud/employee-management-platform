@@ -1,0 +1,27 @@
+name: employee-management-platform
+services:
+  postgres:
+    image: postgres
+    container_name: employee-management-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init-db:/docker-entrypoint-initdb.d
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.3
+    container_name: keycloak-emp
+    command: 
+      - "start-dev"
+    ports:
+      - 9090:8080
+    env_file:
+      - .env.prod
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

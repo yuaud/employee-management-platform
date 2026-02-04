@@ -1,0 +1,27 @@
+name: employee-management-platform
+services:
+  backend:
+    image: yuaud/employee-backend:v4
+    container_name: employee-management-api
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+    depends_on:
+      - keycloak
+    restart: always
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.3
+    container_name: keycloak-emp
+    command: 
+      - start
+      - --import-realm
+    ports:
+      - 9090:8080
+    env_file:
+      - .env
+    volumes:
+      - ./keycloak-export:/opt/keycloak/data/import
+    restart: always
+
+
