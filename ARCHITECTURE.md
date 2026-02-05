@@ -64,7 +64,6 @@
     - [Service Topology](#service-topology)
     - [Access Architecture](#access-architecture)
     - [Configuration Model](#configuration-model)
-* [Screenshots](#screenshots-opsiyonel)
 
 ---
 
@@ -720,7 +719,7 @@ npm run dev
 - Secret separation model
 
 
-## Screenshots (opsiyonel)
+
 
 
 
